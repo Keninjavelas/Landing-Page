@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Système de Surveillance",
+    "subtitle": "Surveillance des Flux de Données",
+    "description": "Bienvenue dans le Portfolio Rétro-Futuriste. Naviguez à travers les canaux sécurisés pour accéder aux informations classifiées."
+  },
+  "about": {
+    "title": "Profil de l'Agent",
+    "subtitle": "Niveau d'Autorisation: Maximum",
+    "description": "Ingénieur logiciel expérimenté spécialisé dans les technologies web de pointe et les expériences utilisateur immersives."
+  },
+  "projects": {
+    "title": "Archives de Missions",
+    "subtitle": "Opérations Terminées",
+    "viewProject": "Accéder aux Fichiers"
+  },
+  "contact": {
+    "title": "Établir une Connexion",
+    "subtitle": "Canal de Communication Sécurisé",
+    "email": "Email",
+    "message": "Message",
+    "send": "Transmettre"
+  },
+  "audio": {
+    "mute": "Muet",
+    "unmute": "Activer le Son",
+    "genre": "Genre Audio",
+    "classical": "Classique",
+    "jazz": "Jazz",
+    "piano": "Piano"
+  }
+}

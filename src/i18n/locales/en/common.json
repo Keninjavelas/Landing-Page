@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Surveillance System",
+    "subtitle": "Monitoring Data Streams",
+    "description": "Welcome to the Retro-Futuristic Portfolio. Navigate through the secure channels to access classified information."
+  },
+  "about": {
+    "title": "Agent Profile",
+    "subtitle": "Clearance Level: Maximum",
+    "description": "Experienced software engineer specializing in cutting-edge web technologies and immersive user experiences."
+  },
+  "projects": {
+    "title": "Mission Archives",
+    "subtitle": "Completed Operations",
+    "viewProject": "Access Files"
+  },
+  "contact": {
+    "title": "Establish Connection",
+    "subtitle": "Secure Communication Channel",
+    "email": "Email",
+    "message": "Message",
+    "send": "Transmit"
+  },
+  "audio": {
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "genre": "Audio Genre",
+    "classical": "Classical",
+    "jazz": "Jazz",
+    "piano": "Piano"
+  }
+}

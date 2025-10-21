@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über",
+    "projects": "Projekte",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "title": "Überwachungssystem",
+    "subtitle": "Überwachung von Datenströmen",
+    "description": "Willkommen im Retro-Futuristischen Portfolio. Navigieren Sie durch die sicheren Kanäle, um auf klassifizierte Informationen zuzugreifen."
+  },
+  "about": {
+    "title": "Agentenprofil",
+    "subtitle": "Freigabestufe: Maximum",
+    "description": "Erfahrener Software-Ingenieur, spezialisiert auf modernste Webtechnologien und immersive Benutzererlebnisse."
+  },
+  "projects": {
+    "title": "Missionsarchive",
+    "subtitle": "Abgeschlossene Operationen",
+    "viewProject": "Dateien Zugreifen"
+  },
+  "contact": {
+    "title": "Verbindung Herstellen",
+    "subtitle": "Sicherer Kommunikationskanal",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Übertragen"
+  },
+  "audio": {
+    "mute": "Stumm",
+    "unmute": "Ton Aktivieren",
+    "genre": "Audio-Genre",
+    "classical": "Klassisch",
+    "jazz": "Jazz",
+    "piano": "Klavier"
+  }
+}
