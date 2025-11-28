@@ -1,243 +1,183 @@
-# 🌐 Retro-Futuristic Portfolio Landing Page
+# 🚀 Retro-Futuristic Portfolio
 
-A production-ready, mobile-first portfolio landing page built with a custom **Retro-Futuristic Surveillance System** aesthetic. Features an immersive book-page flip navigation and highly dynamic visual effects that react to user input and page state.
+> A modern, multilingual portfolio website featuring a unique dual-theme design: sleek futuristic interface and nostalgic 80s CRT monitor aesthetic.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Next.js](https://img.shields.io/badge/Next.js-15.5-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.x-38bdf8)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.18-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](docs/CONTRIBUTING.md)
 
-## ✨ Core Features & Visual Breakdown
+## ✨ Features
 
-| Feature | Description | Implementation Details |
-|---------|-------------|------------------------|
-| **Realistic Page Flip** | The primary site navigation triggers a smooth, 3D book-page turning animation | Uses Framer Motion combined with CSS `transform: rotateY()` and a `perspective: 1400px` container. Includes fade fallback for `prefers-reduced-motion` |
-| **50/50 Split Background** | The background is divided into two themed halves with contrasting movement | **Left (Retro/Past):** Subtle Dust Drift animation (`--color-sepia`). **Right (Future/Cyber):** Intermittent Glitch Flicker animation (`--color-neon-cyan`). Implemented via fixed, layered CSS `::before` and `::after` pseudo-elements |
-| **Orbital Tracker Core** | The fixed, bottom-centered mascot acts as a high-tech monitoring system | Uses React Trigonometry (`Math.atan2`) and Framer Motion `useSpring` to smoothly rotate an internal satellite to follow the mouse cursor's exact position |
-| **State-Based Theming** | The Orbital Core's glow and the primary theme color change dynamically based on the current page | E.g., Neon Cyan on Home, Gold on About, Pink on Projects, Green on Contact |
-| **Glitch Text Hover** | Primary page headings scramble their characters on hover | Custom `GlitchText` component uses string manipulation and an internal timer to cycle characters from right to left |
-| **Multi-Genre Audio Jukebox** | Users can select background music from a dedicated menu in the top-left corner | Howler.js manages multiple playlists (Classical, Jazz, Piano) and persists the user's genre and mute preference in localStorage |
-| **Scroll Feedback** | Scrolling within a page provides thematic feedback | Custom CSS for themed scrollbars and a brief neon pulse on overscroll |
-| **UX Persistence** | User settings are saved across sessions | localStorage remembers the user's last visited page, audio volume, and selected music genre |
-| **Multi-Lingual Support** | Full language support for four locales | react-i18next handles all translations (en, es, fr, de) and Next.js App Router manages localized URLs |
+- **🎨 Dual Theme System** - Switch between futuristic neon and retro CRT aesthetics
+- **🌍 Multilingual** - Full support for English, Spanish, French, and German
+- **🎵 Background Music** - Optional ambient music with genre selection
+- **📱 Responsive Design** - Optimized for all devices and screen sizes
+- **🎯 Dynamic Projects** - Auto-synced with GitHub repositories
+- **📧 Contact Form** - Functional form with Web3Forms integration
+- **🎮 Easter Eggs** - Hidden interactive elements throughout
+- **⚡ Performance** - SSR/SSG with optimized loading and caching
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS 4 (configured with custom CSS variables)
-- **Animations:** framer-motion
-- **Audio:** howler
-- **I18n:** react-i18next
+- **Styling:** Tailwind CSS
+- **3D Graphics:** Three.js & React Three Fiber
+- **Animations:** Framer Motion
+- **Audio:** Howler.js
+- **i18n:** next-intl
 - **Testing:** Jest & React Testing Library
-- **Images:** next/image (for optimization and performance)
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
-### 1. Installation
+### Prerequisites
+
+- Node.js 18.18.0 or higher
+- npm, yarn, or pnpm
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/Keninjavelas/Landing-Page.git
+cd Landing-Page
+
+# Install dependencies
 npm install
-```
 
-### 2. Add Audio Assets (Critical Step)
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local and add your Web3Forms access key
 
-For the audio system to work, you must add royalty-free or CC0 licensed MP3 files to the corresponding folders:
-
-| Folder Path | Required Files | Purpose |
-|-------------|----------------|----------|
-| `/public/audio/` | `page-flip.mp3` | Page transition sound effect |
-| `/public/audio/classical/` | 3+ MP3 files (`track1.mp3`, `track2.mp3`, `track3.mp3`) | Classical music playlist |
-| `/public/audio/jazz/` | 3+ MP3 files | Jazz music playlist |
-| `/public/audio/piano/` | 3+ MP3 files | Piano music playlist |
-
-**Recommended Sources:**
-- [Free Music Archive](https://freemusicarchive.org/)
-- [Incompetech](https://incompetech.com/)
-- [YouTube Audio Library](https://www.youtube.com/audiolibrary)
-
-### 3. Run Development Server
-
-```bash
+# Start development server
 npm run dev
 ```
 
-The site will be available at [http://localhost:3000/en/home](http://localhost:3000/en/home)
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### 4. Testing
+### Available Commands
 
 ```bash
-# Run tests in watch mode
-npm test
-
-# Run tests once (used in CI)
-npm run test:ci
-```
-
-## ⚙️ Configuration & Customization
-
-### Theming
-
-All colors and fonts are controlled via CSS Variables defined in `src/app/globals.css`. Modify the hex codes to instantly change the entire theme:
-
-```css
-@theme {
-  --color-neon-cyan: #00ffff;
-  --color-neon-gold: #ffd700;
-  --color-sepia: #c9a868;
-  /* ...more colors */
-}
-```
-
-### Portfolio Data
-
-Project entries are managed in `src/lib/projects.ts`. Edit the `portfolioProjects` array to add, remove, or modify project details:
-
-```typescript
-export const portfolioProjects: Project[] = [
-  {
-    id: '001',
-    title: 'Your Project',
-    description: 'Project description',
-    technologies: ['React', 'TypeScript'],
-    status: 'completed',
-  },
-  // Add more projects...
-];
-```
-
-### Internationalization
-
-Translations are stored in `src/i18n/locales/{locale}/common.json`. Add or modify translations for each supported language (en, es, fr, de).
-
-## 🚢 Deployment
-
-### Vercel (Recommended)
-
-1. Connect your Git repository to Vercel
-2. The platform will auto-detect Next.js
-3. Deploy with default settings
-
-### Netlify
-
-1. Connect your Git repository
-2. Build command: `npm run build`
-3. Publish directory: `.next`
-
-### GitHub Actions CI
-
-The `.github/workflows/ci.yml` file is configured to run on every push or pull request:
-- Runs `npm run lint`
-- Runs `npm run test:ci`
-- Runs `npm run build`
-
-## 🎨 Component Architecture
-
-### PageFlipContainer
-
-The core 3D flip effect:
-
-```typescript
-const pageVariants = {
-  animate: {
-    rotateY: 0,
-    transition: { duration: 0.55, ease: 'easeInOut' }
-  }
-};
-```
-
-Wraps content with `style={{ perspective: '1400px' }}` for proper 3D rendering.
-
-### MascotFollower (Orbital Tracker)
-
-Trigonometry-based mouse tracking:
-
-```typescript
-const angleRad = Math.atan2(deltaY, deltaX);
-angleDeg.set(angleRad * (180 / Math.PI) + 90);
-```
-
-Uses Framer Motion's `useSpring` for smooth, physics-based movement.
-
-### GlitchText
-
-Character scrambling on hover with configurable elements:
-
-```tsx
-<GlitchText as="h1" className="text-neon-cyan">
-  Your Text
-</GlitchText>
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm test             # Run tests
+npm run test:ci      # Run tests in CI mode
+npm run i18n:check   # Validate translations
 ```
 
 ## 📁 Project Structure
 
 ```
 retro-futuristic-portfolio/
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── public/
-│   └── audio/
-│       ├── classical/
-│       ├── jazz/
-│       └── piano/
+├── docs/                 # 📚 All documentation
+├── public/               # Static assets
+│   ├── audio/           # Background music files
+│   └── Resume.pdf       # Your resume
 ├── src/
-│   ├── app/
-│   │   ├── [locale]/
-│   │   │   ├── home/
-│   │   │   ├── about/
-│   │   │   ├── projects/
-│   │   │   ├── contact/
-│   │   │   └── layout.tsx
-│   │   └── globals.css
-│   ├── components/
-│   │   ├── AudioJukebox.tsx
-│   │   ├── GlitchText.tsx
-│   │   ├── MascotFollower.tsx
-│   │   ├── Navigation.tsx
-│   │   └── PageFlipContainer.tsx
-│   ├── i18n/
-│   │   ├── locales/
-│   │   ├── client.ts
-│   │   └── config.ts
-│   ├── lib/
-│   │   └── projects.ts
-│   └── middleware.ts
-├── jest.config.js
-├── jest.setup.js
-├── package.json
-└── tsconfig.json
+│   ├── app/             # Next.js App Router
+│   │   ├── [locale]/    # Internationalized routes
+│   │   └── api/         # API routes
+│   ├── components/      # React components
+│   ├── contexts/        # React contexts
+│   ├── i18n/           # Internationalization
+│   ├── lib/            # Utility functions
+│   └── middleware.ts   # Routing middleware
+└── .env.local          # Environment variables (create this)
 ```
 
-## 🎯 Browser Support
+## ⚙️ Configuration
 
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari 14+
-- Mobile browsers (iOS Safari, Chrome Mobile)
+### Environment Variables
 
-## 📝 License
+Create `.env.local` in the root directory:
 
-MIT License - feel free to use this project for your own portfolio!
+```env
+# Required for contact form
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+
+# Optional: GitHub token for higher API rate limits
+GITHUB_TOKEN=your_github_token
+```
+
+Get your Web3Forms access key at [web3forms.com](https://web3forms.com/)
+
+### Customization
+
+1. **Personal Information**
+   - Update `src/app/constants.ts` with your details
+   - Edit translation files in `src/i18n/locales/`
+   - Replace `public/Resume.pdf` with your resume
+
+2. **GitHub Integration**
+   - Update username in `src/lib/github.ts`
+   - Projects will auto-sync from your repositories
+
+3. **Audio Files** (Optional)
+   - Add `jazz.mp3` and `piano.mp3` to `public/audio/`
+   - See `public/audio/README.md` for details
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Keninjavelas/Landing-Page)
+
+Or using CLI:
+
+```bash
+npm i -g vercel
+vercel login
+vercel --prod
+```
+
+### Other Platforms
+
+- **Netlify:** Connect your GitHub repository
+- **Railway:** Run `railway up`
+- **Docker:** See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+
+For detailed deployment instructions, see the [Deployment Guide](docs/DEPLOYMENT.md).
+
+## 📚 Documentation
+
+Complete documentation is available in the [`docs/`](docs/) folder:
+
+- [Quick Start Guide](docs/QUICK_START.md) - Fast setup and common commands
+- [Setup Guide](docs/SETUP_GUIDE.md) - Detailed installation instructions
+- [Deployment Guide](docs/DEPLOYMENT.md) - Deploy to various platforms
+- [Contributing Guide](docs/CONTRIBUTING.md) - How to contribute
+- [Commands Reference](docs/COMMANDS.md) - All commands in one place
+- [Changelog](docs/CHANGELOG.md) - Version history
+- [Project Status](docs/PROJECT_STATUS.md) - Current project status
+
+See the [Documentation Index](docs/README.md) for the complete list.
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
+Contributions are welcome! Please read the [Contributing Guide](docs/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-## 💡 Tips
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-1. **Performance:** The project uses Next.js's built-in image optimization. Place images in `/public` for best results.
-2. **Accessibility:** All interactive elements have proper focus states and ARIA labels.
-3. **Customization:** Start by modifying colors in `globals.css` and project data in `projects.ts`.
-4. **Audio:** Remember to add actual audio files before deploying to production!
+## 📜 License
 
-## 🔗 Useful Links
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Howler.js](https://howlerjs.com/)
+## 📧 Contact
+
+**Aryan Kapoor**  
+Email: [aryankapoor0303@gmail.com](mailto:aryankapoor0303@gmail.com)  
+GitHub: [@Keninjavelas](https://github.com/Keninjavelas)
 
 ---
 
-**Built with 🎨 by developers, for developers**
+<div align="center">
+  <strong>Made with ❤️ and lots of ☕</strong>
+</div>

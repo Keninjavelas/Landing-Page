@@ -1,87 +1,163 @@
+'use client';
+
 import { type Locale } from '@/i18n/config';
+import { useClientTranslation } from '@/i18n/client';
 import GlitchText from '@/components/GlitchText';
+import { useParams } from 'next/navigation';
 
-interface AboutPageProps {
-  params: Promise<{ locale: Locale }>;
-}
-
-export default async function AboutPage({ params }: AboutPageProps) {
-  await params;
+export default function AboutPage() {
+  const params = useParams();
+  const locale = params.locale as Locale;
+  const { t } = useClientTranslation(locale);
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="mb-12">
-        <GlitchText className="text-4xl md:text-6xl text-neon-gold mb-4">
-          AGENT PROFILE
-        </GlitchText>
-        <h2 className="text-lg md:text-xl text-sepia font-mono">
-          CLEARANCE LEVEL: MAXIMUM
-        </h2>
-      </div>
+    <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      {/* Hero Section */}
+      <section className="py-10 text-center">
+        <div className="mb-10">
+          <h1 className="text-xl md:text-2xl text-sepia font-mono tracking-[0.3em] uppercase mb-6">
+            [ DEVELOPER PROFILE ]
+          </h1>
+          <GlitchText className="text-5xl md:text-7xl text-amber-500 mb-8">
+            {t('home.title')}
+          </GlitchText>
+          <h2 className="text-xl md:text-2xl text-neon-cyan font-mono tracking-wider">
+            {t('about.subtitle').toUpperCase()}
+          </h2>
+        </div>
+      </section>
 
-      <div className="space-y-8">
-        {/* Profile Section */}
-        <div className="border border-neon-gold p-8 rounded bg-bg-darker bg-opacity-50">
-          <h3 className="text-2xl text-neon-gold mb-4 font-mono">[ CLASSIFIED DOSSIER ]</h3>
-          <p className="text-text-secondary text-lg leading-relaxed mb-4">
-            Experienced software engineer specializing in cutting-edge web technologies
-            and immersive user experiences. Expert in React, TypeScript, Next.js, and
-            modern frontend architectures.
+      {/* Bio Section */}
+      <section className="py-10 border-t border-neon-gold border-opacity-30">
+        <div className="max-w-4xl mx-auto px-6">
+          <h3 className="text-2xl md:text-3xl text-neon-pink mb-8 font-mono">{t('about.heading').toUpperCase()}</h3>
+          <p className="text-lg text-sepia mb-6 leading-relaxed">
+            {t('about.description')}
           </p>
-          <p className="text-text-secondary text-lg leading-relaxed">
-            Committed to building production-ready applications with exceptional
-            performance, accessibility, and visual design. Passionate about creating
-            unique digital experiences that blend retro aesthetics with futuristic
-            functionality.
+          <p className="text-lg text-sepia mb-6 leading-relaxed">
+            {t('about.paragraph2')}
+          </p>
+          <p className="text-lg text-sepia mb-8 leading-relaxed">
+            {t('about.paragraph3')}
+          </p>
+          
+          <h3 className="text-2xl md:text-3xl text-neon-pink mb-8 font-mono">TECHNICAL EXPERTISE</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="border border-neon-cyan p-6 bg-bg-darker">
+              <h4 className="text-xl text-neon-cyan mb-4 font-mono">FRONTEND & WEB</h4>
+              <ul className="space-y-2 text-sepia">
+                <li>• React & Next.js</li>
+                <li>• TypeScript & JavaScript</li>
+                <li>• Tailwind CSS</li>
+                <li>• Three.js & React Three Fiber</li>
+                <li>• Framer Motion</li>
+              </ul>
+            </div>
+            <div className="border border-neon-cyan p-6 bg-bg-darker">
+              <h4 className="text-xl text-neon-cyan mb-4 font-mono">BACKEND & CLOUD</h4>
+              <ul className="space-y-2 text-sepia">
+                <li>• Node.js & Express</li>
+                <li>• Python & Flask</li>
+                <li>• MongoDB & PostgreSQL</li>
+                <li>• REST API Design</li>
+                <li>• AWS Cloud Services</li>
+              </ul>
+            </div>
+            <div className="border border-neon-cyan p-6 bg-bg-darker">
+              <h4 className="text-xl text-neon-cyan mb-4 font-mono">PROGRAMMING</h4>
+              <ul className="space-y-2 text-sepia">
+                <li>• Java & C/C++</li>
+                <li>• Python & JavaScript</li>
+                <li>• Shell Scripting (Bash)</li>
+                <li>• TypeScript</li>
+                <li>• SQL</li>
+              </ul>
+            </div>
+            <div className="border border-neon-cyan p-6 bg-bg-darker">
+              <h4 className="text-xl text-neon-cyan mb-4 font-mono">EMERGING TECH</h4>
+              <ul className="space-y-2 text-sepia">
+                <li>• Quantum Computing</li>
+                <li>• Blockchain Technology</li>
+                <li>• Cloud Architecture</li>
+                <li>• DevOps & CI/CD</li>
+                <li>• Git & Version Control</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="py-10">
+        <div className="text-center mb-8">
+          <h3 className="text-2xl md:text-3xl text-neon-cyan mb-4 font-mono">
+            [ TECHNICAL EXPERTISE ]
+          </h3>
+          <p className="text-text-secondary text-lg">
+            Technologies and tools I work with daily
           </p>
         </div>
-
-        {/* Skills Grid */}
-        <div>
-          <h3 className="text-2xl text-neon-cyan mb-6 font-mono">[ TECHNICAL CAPABILITIES ]</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { category: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
-              { category: 'Animation', skills: ['Framer Motion', 'GSAP', 'Three.js', 'WebGL'] },
-              { category: 'Backend', skills: ['Node.js', 'Python', 'PostgreSQL', 'Redis'] },
-              { category: 'Tools', skills: ['Git', 'Docker', 'Jest', 'CI/CD'] },
-            ].map((group) => (
-              <div
-                key={group.category}
-                className="border border-neon-cyan p-6 rounded bg-bg-darker bg-opacity-30 hover:bg-opacity-60 transition-all"
-              >
-                <div className="text-neon-cyan font-mono text-sm mb-3">{group.category}</div>
-                <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-neon-cyan bg-opacity-10 text-neon-cyan text-sm rounded border border-neon-cyan border-opacity-30"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { 
+              category: 'Frontend', 
+              skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Three.js'],
+              color: 'neon-cyan'
+            },
+            { 
+              category: 'Backend', 
+              skills: ['Node.js', 'Express', 'Python', 'Flask', 'MongoDB'],
+              color: 'neon-gold'
+            },
+            { 
+              category: 'Cloud & DevOps', 
+              skills: ['AWS', 'Git', 'Shell Scripting', 'Vercel', 'CI/CD'],
+              color: 'neon-green'
+            },
+            { 
+              category: 'Languages', 
+              skills: ['Java', 'C/C++', 'Python', 'JavaScript', 'TypeScript'],
+              color: 'neon-pink'
+            },
+          ].map((group) => {
+            const borderClasses = {
+              'neon-cyan': 'border-neon-cyan',
+              'neon-gold': 'border-neon-gold',
+              'neon-green': 'border-neon-green',
+              'neon-pink': 'border-neon-pink',
+            };
+            const textClasses = {
+              'neon-cyan': 'text-neon-cyan',
+              'neon-gold': 'text-neon-gold',
+              'neon-green': 'text-neon-green',
+              'neon-pink': 'text-neon-pink',
+            };
+            return (
+            <div
+              key={group.category}
+              className={`border ${borderClasses[group.color as keyof typeof borderClasses]} p-6 rounded-lg bg-bg-darker bg-opacity-30 hover:bg-opacity-70 transition-all duration-300 text-center`}
+            >
+              <div className={`${textClasses[group.color as keyof typeof textClasses]} font-mono text-lg mb-4 font-semibold`}>
+                {group.category}
               </div>
-            ))}
-          </div>
+              <div className="space-y-2">
+                {group.skills.map((skill) => (
+                  <div
+                    key={skill}
+                    className="text-text-secondary text-sm py-1 hover:text-neon-cyan transition-colors"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </div>
+            );
+          })}
         </div>
+      </section>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="text-center p-6 border border-sepia rounded bg-bg-darker bg-opacity-30">
-            <div className="text-3xl font-bold text-sepia mb-2">5+</div>
-            <div className="text-sm text-text-secondary font-mono">YEARS ACTIVE</div>
-          </div>
-          <div className="text-center p-6 border border-neon-gold rounded bg-bg-darker bg-opacity-30">
-            <div className="text-3xl font-bold text-neon-gold mb-2">50+</div>
-            <div className="text-sm text-text-secondary font-mono">PROJECTS</div>
-          </div>
-          <div className="text-center p-6 border border-neon-green rounded bg-bg-darker bg-opacity-30">
-            <div className="text-3xl font-bold text-neon-green mb-2">100%</div>
-            <div className="text-sm text-text-secondary font-mono">DEDICATION</div>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 }

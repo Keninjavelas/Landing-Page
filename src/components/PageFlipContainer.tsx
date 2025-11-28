@@ -8,44 +8,28 @@ interface PageFlipContainerProps {
   children: React.ReactNode;
 }
 
-const pageVariants = {
-  initial: (direction: number) => ({
-    rotateY: direction > 0 ? 90 : -90,
-    opacity: 0,
-  }),
-  animate: {
-    rotateY: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.55,
-      ease: 'easeInOut',
-    },
-  },
-  exit: (direction: number) => ({
-    rotateY: direction > 0 ? -90 : 90,
-    opacity: 0,
-    transition: {
-      duration: 0.55,
-      ease: 'easeInOut',
-    },
-  }),
-};
-
 export default function PageFlipContainer({ children }: PageFlipContainerProps) {
   const pathname = usePathname();
-  const [direction, setDirection] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [prevPath, setPrevPath] = useState(pathname);
 
   useEffect(() => {
     // Determine direction based on page order
-    const pages = ['home', 'about', 'projects', 'contact'];
-    const currentPage = pathname.split('/').pop() || 'home';
-    const prevPage = prevPath.split('/').pop() || 'home';
+    const pages = ['home', 'about', 'projects', 'contact', 'secret-game'];
     
-    const currentIndex = pages.indexOf(currentPage);
-    const prevIndex = pages.indexOf(prevPage);
+    // Extract page name (ignore locale)
+    const pathSegments = pathname.split('/').filter(Boolean);
+    const currentPage = pathSegments[1] || 'home';
+    const prevSegments = prevPath.split('/').filter(Boolean);
+    const prevPage = prevSegments[1] || 'home';
     
-    setDirection(currentIndex > prevIndex ? 1 : -1);
+    // Only set direction if the actual page changed
+    if (currentPage !== prevPage) {
+      const currentIndex = pages.indexOf(currentPage);
+      const prevIndex = pages.indexOf(prevPage);
+      setDirection(currentIndex > prevIndex ? 1 : -1);
+    }
+    
     setPrevPath(pathname);
   }, [pathname, prevPath]);
 
@@ -55,32 +39,43 @@ export default function PageFlipContainer({ children }: PageFlipContainerProps) 
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (prefersReducedMotion) {
-    return (
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-      >
-        {children}
-      </motion.div>
-    );
+    return <div key={pathname}>{children}</div>;
   }
 
+  // Book page flip animation
+  const pageVariants = {
+    initial: {
+      rotateY: direction > 0 ? -15 : 15,
+      opacity: 0,
+      scale: 0.95,
+    },
+    animate: {
+      rotateY: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: {
+      rotateY: direction > 0 ? 15 : -15,
+      opacity: 0,
+      scale: 0.95,
+    },
+  };
+
   return (
-    <div style={{ perspective: '1400px', perspectiveOrigin: '50% 50%' }}>
-      <AnimatePresence mode="wait" custom={direction}>
+    <div style={{ perspective: '1500px' }}>
+      <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
-          custom={direction}
           variants={pageVariants}
           initial="initial"
           animate="animate"
           exit="exit"
+          transition={{
+            duration: 0.4,
+            ease: 'easeInOut',
+          }}
           style={{
             transformStyle: 'preserve-3d',
-            backfaceVisibility: 'hidden',
           }}
         >
           {children}

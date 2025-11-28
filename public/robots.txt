@@ -1,0 +1,12 @@
+# robots.txt for retro-futuristic-portfolio
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://your-portfolio-domain.com/sitemap.xml
+
+# Disallow admin or private routes if any
+# Disallow: /admin/
+# Disallow: /api/
+

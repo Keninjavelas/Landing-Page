@@ -6,33 +6,60 @@
     "contact": "Contact"
   },
   "home": {
-    "title": "Système de Surveillance",
-    "subtitle": "Surveillance des Flux de Données",
-    "description": "Bienvenue dans le Portfolio Rétro-Futuriste. Naviguez à travers les canaux sécurisés pour accéder aux informations classifiées."
+    "title": "Aryan Kapoor",
+    "role": "Explorateur Technologique et Architecte de l'Innovation",
+    "subtitle": "Développeur Full-Stack",
+    "tagline": "Architecte Numérique",
+    "description": "Création d'expériences web innovantes à l'intersection de la technologie moderne et du design créatif. Spécialisé en React, Next.js et interfaces utilisateur immersives.",
+    "cta": {
+      "projects": "Voir les Projets",
+      "contact": "Me Contacter"
+    },
+    "skills": {
+      "title": "Arsenal Technique",
+      "subtitle": "Technologies et frameworks dans ma boîte à outils numérique"
+    },
+    "availability": "Actuellement disponible pour de nouveaux projets"
   },
   "about": {
-    "title": "Profil de l'Agent",
-    "subtitle": "Niveau d'Autorisation: Maximum",
-    "description": "Ingénieur logiciel expérimenté spécialisé dans les technologies web de pointe et les expériences utilisateur immersives."
+    "title": "À propos d'Aryan Kapoor",
+    "subtitle": "Explorateur Technologique et Architecte de l'Innovation",
+    "heading": "À Propos de Moi",
+    "description": "Je suis un développeur enthousiaste qui poursuit actuellement mon diplôme en informatique, animé par une passion profonde pour la création d'expériences web modernes et significatives. Bien que je sois encore au début de mon parcours et que je n'aie pas d'expérience formelle dans l'industrie, je renforce activement mes compétences en React, Next.js et Node.js à travers des projets personnels et un apprentissage continu.",
+    "paragraph2": "Je suis particulièrement fasciné par le cloud computing et je travaille à construire une base solide pour lancer ma carrière dans ce domaine en évolution rapide. Ma curiosité s'étend naturellement aux technologies émergentes - j'ai déjà exploré des applications pratiques de l'informatique quantique à travers un projet académique, et je suis également captivé par les possibilités de la blockchain et son impact potentiel sur l'avenir des systèmes numériques.",
+    "paragraph3": "Chaque projet que j'entreprends est une opportunité de grandir, d'expérimenter et de repousser les limites de ce que je peux créer. Je m'engage à écrire du code propre et maintenable et à rester aligné avec les pratiques de développement modernes. La collaboration, la cohérence et la soif d'apprendre façonnent mon parcours alors que je travaille pour devenir un développeur capable et prêt pour l'industrie."
   },
   "projects": {
-    "title": "Archives de Missions",
-    "subtitle": "Opérations Terminées",
-    "viewProject": "Accéder aux Fichiers"
+    "title": "Archives de Mission",
+    "subtitle": "Une vitrine d'opérations terminées et de développement actif",
+    "description": "Explorez mon portfolio de projets présentant le développement web moderne, le cloud computing et les technologies émergentes.",
+    "viewProject": "Voir le Projet",
+    "viewCode": "Voir le Code",
+    "liveDemo": "Démo en Direct"
   },
   "contact": {
-    "title": "Établir une Connexion",
-    "subtitle": "Canal de Communication Sécurisé",
-    "email": "Email",
-    "message": "Message",
-    "send": "Transmettre"
-  },
-  "audio": {
-    "mute": "Muet",
-    "unmute": "Activer le Son",
-    "genre": "Genre Audio",
-    "classical": "Classique",
-    "jazz": "Jazz",
-    "piano": "Piano"
+    "title": "Prenons Contact",
+    "subtitle": "Construisons Quelque Chose d'Incroyable Ensemble",
+    "description": "Je suis toujours intéressé par de nouvelles opportunités et des projets passionnants. Que vous ayez une question ou que vous souhaitiez travailler ensemble, n'hésitez pas à me contacter !",
+    "internship": {
+      "title": "Opportunités de Stage",
+      "description": "Je recherche activement des opportunités de stage pour acquérir une expérience pratique et contribuer à des projets innovants. Ouvert aux postes rémunérés et non rémunérés offrant des expériences d'apprentissage précieuses.",
+      "details": "Intéressé par le cloud computing, le développement web et les technologies émergentes. Prêt à apporter enthousiasme, dévouement et une forte volonté d'apprendre à votre équipe.",
+      "cta": "Envoyer une Demande de Stage"
+    },
+    "form": {
+      "name": "Votre Nom",
+      "email": "Votre Email",
+      "subject": "Sujet",
+      "message": "Votre Message",
+      "send": "Envoyer le Message"
+    },
+    "info": {
+      "title": "Informations de Contact",
+      "email": "Email",
+      "location": "Localisation",
+      "locationValue": "Inde (Travail à Distance Disponible)",
+      "response": "Répond généralement dans les 24 heures"
+    }
   }
 }

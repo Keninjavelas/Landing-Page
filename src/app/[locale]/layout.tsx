@@ -1,14 +1,40 @@
 import type { Metadata } from 'next';
-import { locales, type Locale } from '@/i18n/config';
-import '../globals.css';
+import { locales, type Locale, isValidLocale } from '@/i18n/config';
+import '../globals-minimal.css';
 import PageFlipContainer from '@/components/PageFlipContainer';
-import MascotFollower from '@/components/MascotFollower';
-import AudioJukebox from '@/components/AudioJukebox';
 import Navigation from '@/components/Navigation';
+import ThemeWrapper from '@/components/ThemeWrapper';
+import SkipToContent from '@/components/SkipToContent';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import StructuredData from '@/components/StructuredData';
+import Analytics from '@/components/Analytics';
+import SuppressExtensionErrors from '@/components/SuppressExtensionErrors';
+import { lazy, Suspense } from 'react';
+
+// Lazy load non-critical components
+const ScrollToTop = lazy(() => import('@/components/ScrollToTop'));
+const ReadingProgress = lazy(() => import('@/components/ReadingProgress'));
+const ServiceWorker = lazy(() => import('@/components/ServiceWorker'));
 
 export const metadata: Metadata = {
-  title: 'Retro-Futuristic Portfolio | Surveillance System',
-  description: 'A production-ready, mobile-first portfolio landing page with retro-futuristic aesthetic and immersive visual effects.',
+  metadataBase: new URL('https://your-portfolio-domain.com'),
+  title: 'Aryan Kapoor | Full-Stack Developer',
+  description: 'Full-stack developer specializing in React, Next.js, and Node.js. Creating innovative web experiences with modern technology and creative design.',
+  keywords: ['Aryan Kapoor', 'Full-Stack Developer', 'React', 'Next.js', 'TypeScript', 'Web Development', 'Portfolio'],
+  authors: [{ name: 'Aryan Kapoor' }],
+  creator: 'Aryan Kapoor',
+  openGraph: {
+    title: 'Aryan Kapoor | Full-Stack Developer',
+    description: 'Full-stack developer specializing in React, Next.js, and Node.js. Creating innovative web experiences.',
+    url: 'https://your-portfolio-domain.com',
+    siteName: 'Aryan Kapoor Portfolio',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aryan Kapoor | Full-Stack Developer',
+    description: 'Full-stack developer specializing in React, Next.js, and Node.js. Creating innovative web experiences.',
+  },
 };
 
 export async function generateStaticParams() {
@@ -17,7 +43,7 @@ export async function generateStaticParams() {
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }
 
 export default async function LocaleLayout({
@@ -25,18 +51,30 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   const { locale } = await params;
+  const resolvedLocale: Locale = isValidLocale(locale) ? locale : 'en';
 
   return (
-    <html lang={locale}>
-      <body className="antialiased">
-        <AudioJukebox />
-        <Navigation locale={locale} />
-        <PageFlipContainer>
-          <main className="min-h-screen pt-20 pb-32 px-4 md:px-8">
-            {children}
-          </main>
-        </PageFlipContainer>
-        <MascotFollower themeColor="#00ffff" />
+    <html lang={resolvedLocale}>
+      <body className="antialiased" suppressHydrationWarning>
+        <ErrorBoundary>
+          <ThemeWrapper locale={resolvedLocale}>
+            <SkipToContent />
+            <SuppressExtensionErrors />
+            <Analytics />
+            <StructuredData />
+            <Navigation locale={resolvedLocale} />
+            <PageFlipContainer>
+              <main id="main-content" className="min-h-screen pt-20 pb-32 px-4 md:px-8">
+                {children}
+              </main>
+            </PageFlipContainer>
+            <Suspense fallback={null}>
+              <ReadingProgress />
+              <ScrollToTop />
+              <ServiceWorker />
+            </Suspense>
+          </ThemeWrapper>
+        </ErrorBoundary>
       </body>
     </html>
   );

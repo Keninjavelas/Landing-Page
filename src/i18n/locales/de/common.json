@@ -1,38 +1,65 @@
 {
   "nav": {
     "home": "Startseite",
-    "about": "Über",
+    "about": "Über mich",
     "projects": "Projekte",
     "contact": "Kontakt"
   },
   "home": {
-    "title": "Überwachungssystem",
-    "subtitle": "Überwachung von Datenströmen",
-    "description": "Willkommen im Retro-Futuristischen Portfolio. Navigieren Sie durch die sicheren Kanäle, um auf klassifizierte Informationen zuzugreifen."
+    "title": "Aryan Kapoor",
+    "role": "Tech-Entdecker und Innovations-Architekt",
+    "subtitle": "Full-Stack-Entwickler",
+    "tagline": "Digitaler Architekt",
+    "description": "Entwicklung innovativer Web-Erlebnisse an der Schnittstelle von moderner Technologie und kreativem Design. Spezialisiert auf React, Next.js und immersive Benutzeroberflächen.",
+    "cta": {
+      "projects": "Projekte Ansehen",
+      "contact": "Kontakt Aufnehmen"
+    },
+    "skills": {
+      "title": "Technisches Arsenal",
+      "subtitle": "Technologien und Frameworks in meinem digitalen Werkzeugkasten"
+    },
+    "availability": "Derzeit verfügbar für neue Projekte"
   },
   "about": {
-    "title": "Agentenprofil",
-    "subtitle": "Freigabestufe: Maximum",
-    "description": "Erfahrener Software-Ingenieur, spezialisiert auf modernste Webtechnologien und immersive Benutzererlebnisse."
+    "title": "Über Aryan Kapoor",
+    "subtitle": "Tech-Entdecker und Innovations-Architekt",
+    "heading": "Über Mich",
+    "description": "Ich bin ein begeisterter Entwickler, der derzeit sein Studium der Informatik absolviert, angetrieben von einer tiefen Leidenschaft für die Entwicklung moderner, bedeutungsvoller Web-Erlebnisse. Obwohl ich noch am Anfang meiner Reise stehe und noch keine formelle Branchenerfahrung habe, stärke ich aktiv meine Fähigkeiten in React, Next.js und Node.js durch persönliche Projekte und kontinuierliches Lernen.",
+    "paragraph2": "Ich bin besonders fasziniert von Cloud Computing und arbeite daran, eine solide Grundlage aufzubauen, um meine Karriere in diesem sich schnell entwickelnden Bereich zu starten. Meine Neugier erstreckt sich natürlich auf aufkommende Technologien - ich habe bereits praktische Anwendungen des Quantencomputings durch ein akademisches Projekt erforscht und bin gleichermaßen fasziniert von den Möglichkeiten der Blockchain und ihrem potenziellen Einfluss auf die Zukunft digitaler Systeme.",
+    "paragraph3": "Jedes Projekt, das ich in Angriff nehme, ist eine Gelegenheit zu wachsen, zu experimentieren und die Grenzen dessen zu erweitern, was ich erschaffen kann. Ich bin verpflichtet, sauberen, wartbaren Code zu schreiben und mit modernen Entwicklungspraktiken im Einklang zu bleiben. Zusammenarbeit, Beständigkeit und Wissensdurst prägen meinen Weg, während ich daran arbeite, ein fähiger, branchenbereiter Entwickler zu werden."
   },
   "projects": {
-    "title": "Missionsarchive",
-    "subtitle": "Abgeschlossene Operationen",
-    "viewProject": "Dateien Zugreifen"
+    "title": "Missions-Archive",
+    "subtitle": "Eine Präsentation abgeschlossener Operationen und aktiver Entwicklung",
+    "description": "Erkunden Sie mein Portfolio von Projekten, die moderne Webentwicklung, Cloud Computing und aufkommende Technologien präsentieren.",
+    "viewProject": "Projekt Ansehen",
+    "viewCode": "Code Ansehen",
+    "liveDemo": "Live-Demo"
   },
   "contact": {
-    "title": "Verbindung Herstellen",
-    "subtitle": "Sicherer Kommunikationskanal",
-    "email": "E-Mail",
-    "message": "Nachricht",
-    "send": "Übertragen"
-  },
-  "audio": {
-    "mute": "Stumm",
-    "unmute": "Ton Aktivieren",
-    "genre": "Audio-Genre",
-    "classical": "Klassisch",
-    "jazz": "Jazz",
-    "piano": "Klavier"
+    "title": "Kontakt Aufnehmen",
+    "subtitle": "Lassen Sie uns Gemeinsam Etwas Großartiges Schaffen",
+    "description": "Ich bin immer an neuen Möglichkeiten und spannenden Projekten interessiert. Ob Sie eine Frage haben oder zusammenarbeiten möchten, zögern Sie nicht, mich zu kontaktieren!",
+    "internship": {
+      "title": "Praktikumsmöglichkeiten",
+      "description": "Ich suche aktiv nach Praktikumsmöglichkeiten, um praktische Erfahrungen zu sammeln und zu innovativen Projekten beizutragen. Offen für bezahlte und unbezahlte Positionen, die wertvolle Lernerfahrungen bieten.",
+      "details": "Interessiert an Cloud Computing, Webentwicklung und aufkommenden Technologien. Bereit, Begeisterung, Engagement und eine starke Lernbereitschaft in Ihr Team einzubringen.",
+      "cta": "Praktikumsanfrage Senden"
+    },
+    "form": {
+      "name": "Ihr Name",
+      "email": "Ihre E-Mail",
+      "subject": "Betreff",
+      "message": "Ihre Nachricht",
+      "send": "Nachricht Senden"
+    },
+    "info": {
+      "title": "Kontaktinformationen",
+      "email": "E-Mail",
+      "location": "Standort",
+      "locationValue": "Indien (Remote-Arbeit Verfügbar)",
+      "response": "Antwortet normalerweise innerhalb von 24 Stunden"
+    }
   }
 }

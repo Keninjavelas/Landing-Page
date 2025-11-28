@@ -1,40 +1,66 @@
 {
   "name": "retro-futuristic-portfolio",
-  "version": "0.1.0",
+  "version": "1.0.1",
+  "description": "A modern portfolio website with dual-theme design: futuristic and retro 80s CRT monitor aesthetics",
+  "author": "Aryan Kapoor <aryankapoor0303@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Keninjavelas/Landing-Page.git"
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "retro",
+    "futuristic",
+    "i18n",
+    "responsive"
+  ],
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "lint": "next lint",
+    "test": "jest",
+    "test:ci": "jest --ci",
+    "i18n:check": "node scripts/validate-i18n.js"
   },
   "dependencies": {
+    "@react-spring/three": "^10.0.3",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
     "framer-motion": "^12.23.24",
     "howler": "^2.2.4",
-    "i18next": "^25.6.0",
-    "i18next-resources-to-backend": "^1.2.1",
-    "next": "15.5.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-i18next": "^16.1.4"
+    "next": "^15.5.6",
+    "next-intl": "^3.23.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-i18next": "^15.1.3",
+    "react-icons": "^5.4.0",
+    "three": "^0.181.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
+    "@types/babel__template": "^7.4.4",
     "@types/howler": "^2.2.12",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.6",
-    "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.5.6",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18.18.0"
   }
 }

@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== CSS Variables ===== */
+:root {
+  --color-sepia: #c9a868;
+  --color-neon-cyan: #4dd0e1;
+  --color-neon-gold: #ffd54f;
+  --color-neon-pink: #f06292;
+  --color-neon-green: #81c784;
+  --color-bg-dark: #121212;
+  --color-bg-darker: #0a0a0a;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #b0b0b0;
+  --color-text-muted: #757575;
+}
+
+/* ===== Global Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Futuristic grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-darker);
+  border-left: 1px solid var(--color-neon-cyan);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-neon-cyan) 0%, var(--color-neon-gold) 100%);
+  border-radius: 6px;
+  border: 2px solid var(--color-bg-darker);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-cyan);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neon-cyan) var(--color-bg-darker);
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-neon-cyan);
+  color: var(--color-bg-dark);
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--color-neon-cyan);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: var(--color-neon-gold);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-neon-cyan);
+  outline-offset: 4px;
+}
+
+/* ===== Accessibility ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== RETRO THEME ===== */
+[data-theme="retro"] {
+  --color-sepia: #d4a574;
+  --color-neon-cyan: #ff6600;
+  --color-neon-gold: #ffa500;
+  --color-neon-pink: #cc6600;
+  --color-neon-green: #cc9900;
+  --color-bg-dark: #2a1810;
+  --color-bg-darker: #1a1008;
+  --color-text-primary: #f5e6d3;
+  --color-text-secondary: #e6d4c1;
+  --color-text-muted: #c9a868;
+}
+
+[data-theme="retro"] body {
+  background-color: #0a0a0a;
+  background-image: 
+    /* CRT scanlines */
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    /* Horizontal RGB color shift */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03) 0px,
+      rgba(0, 255, 0, 0.03) 1px,
+      rgba(0, 0, 255, 0.03) 2px,
+      transparent 3px
+    );
+  background-size: 100% 2px, 3px 100%;
+}
+
+/* CRT monitor curved screen vignette and glow */
+[data-theme="retro"] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    /* CRT screen curvature vignette */
+    radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%),
+    /* Phosphor glow in corners */
+    radial-gradient(circle at 0% 0%, rgba(255, 102, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(255, 102, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(255, 102, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(255, 102, 0, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+/* CRT screen flicker and static */
+[data-theme="retro"] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Static noise */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  animation: crt-flicker 0.15s infinite, static-noise 0.2s infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.48; }
+  50% { opacity: 0.52; }
+  100% { opacity: 0.48; }
+}
+
+@keyframes static-noise {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, 1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(0, 1px); }
+  40% { transform: translate(-1px, 0); }
+  50% { transform: translate(1px, -1px); }
+  60% { transform: translate(0, 0); }
+  70% { transform: translate(1px, 1px); }
+  80% { transform: translate(-1px, -1px); }
+  90% { transform: translate(1px, 0); }
+  100% { transform: translate(0, -1px); }
+}
+
+/* CRT monitor bezel shadow */
+[data-theme="retro"] body {
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="retro"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff6600 0%, #ffa500 100%);
+}
+
+[data-theme="retro"] ::selection {
+  background: var(--color-neon-gold);
+  color: var(--color-bg-dark);
+}
+
+/* Vintage glow effect for retro theme */
+[data-theme="retro"] .text-neon-cyan,
+[data-theme="retro"] .text-neon-gold,
+[data-theme="retro"] .text-neon-pink {
+  text-shadow: 0 0 5px currentColor;
+}
+
+
+
+/* Theme-specific header text */
+.futuristic-text {
+  display: inline;
+}
+
+.retro-text {
+  display: none;
+}
+
+[data-theme="retro"] .futuristic-text {
+  display: none;
+}
+
+[data-theme="retro"] .retro-text {
+  display: inline;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.15em;
+}

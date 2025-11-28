@@ -1,27 +1,77 @@
+'use client';
+
 import { type Locale } from '@/i18n/config';
+import { useClientTranslation } from '@/i18n/client';
 import GlitchText from '@/components/GlitchText';
-import { portfolioProjects } from '@/lib/projects';
+import { getProjects, type Project } from '@/lib/projects';
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-interface ProjectsPageProps {
-  params: Promise<{ locale: Locale }>;
-}
+export default function ProjectsPage() {
+  const params = useParams();
+  const locale = params.locale as Locale;
+  const { t } = useClientTranslation(locale);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [statusOverrides, setStatusOverrides] = useState<Record<string, boolean>>({});
 
-export default async function ProjectsPage({ params }: ProjectsPageProps) {
-  await params;
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const fetchedProjects = await getProjects();
+        setProjects(fetchedProjects);
+      } catch (error) {
+        console.error('Error loading projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadProjects();
+  }, []);
 
+  const toggleStatus = (projectId: string) => {
+    setStatusOverrides(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
+
+  const getDisplayStatus = (project: Project) => {
+    if (project.status === 'in-progress') {
+      return statusOverrides[project.id] ? 'in-progress' : 'completed';
+    }
+    return project.status;
+  };
+  
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mb-12">
-        <GlitchText className="text-4xl md:text-6xl text-neon-pink mb-4">
-          MISSION ARCHIVES
-        </GlitchText>
-        <h2 className="text-lg md:text-xl text-sepia font-mono">
-          COMPLETED OPERATIONS
-        </h2>
-      </div>
+    <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Header Section */}
+      <section className="text-center py-8 mb-8">
+        <div className="mb-8">
+          <h1 className="text-xl md:text-2xl text-sepia font-mono tracking-[0.3em] uppercase mb-6">
+            [ PROJECT SHOWCASE ]
+          </h1>
+          <GlitchText className="text-4xl md:text-6xl text-neon-pink mb-4">
+            MISSION ARCHIVES
+          </GlitchText>
+          <h2 className="text-lg md:text-xl text-text-secondary font-mono mb-6">
+            COMPLETED OPERATIONS & ACTIVE DEVELOPMENT
+          </h2>
+          <p className="max-w-3xl mx-auto text-text-secondary text-lg leading-relaxed">
+            {t('projects.subtitle')}
+          </p>
+        </div>
+      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {portfolioProjects.map((project) => (
+      {loading ? (
+        <div className="text-center py-20">
+          <div className="text-neon-cyan font-mono text-xl animate-pulse">
+            LOADING PROJECTS FROM GITHUB...
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => (
           <div
             key={project.id}
             className="border border-neon-pink p-6 rounded bg-bg-darker bg-opacity-50 hover:bg-opacity-80 transition-all group"
@@ -34,17 +84,19 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
                 </h3>
                 <div className="text-xs font-mono text-text-muted">ID: {project.id}</div>
               </div>
-              <span
-                className={`px-3 py-1 text-xs font-mono rounded ${
-                  project.status === 'completed'
-                    ? 'bg-neon-green bg-opacity-20 text-neon-green border border-neon-green'
-                    : project.status === 'in-progress'
-                    ? 'bg-neon-gold bg-opacity-20 text-neon-gold border border-neon-gold'
-                    : 'bg-text-muted bg-opacity-20 text-text-muted border border-text-muted'
-                }`}
+              <button
+                onClick={() => project.status === 'in-progress' && toggleStatus(project.id)}
+                className={`px-3 py-1 text-xs font-mono rounded transition-all ${
+                  getDisplayStatus(project) === 'completed'
+                    ? 'bg-bg-dark text-neon-green border border-neon-green'
+                    : getDisplayStatus(project) === 'in-progress'
+                    ? 'bg-bg-dark text-neon-gold border border-neon-gold'
+                    : 'bg-bg-dark text-text-muted border border-text-muted'
+                } ${project.status === 'in-progress' ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
+                title={project.status === 'in-progress' ? 'Click to toggle status' : ''}
               >
-                {project.status.toUpperCase()}
-              </span>
+                {getDisplayStatus(project).toUpperCase()}
+              </button>
             </div>
 
             {/* Description */}
@@ -57,42 +109,62 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 bg-neon-cyan bg-opacity-10 text-neon-cyan text-xs rounded border border-neon-cyan border-opacity-30 font-mono"
+                  className="px-2 py-1 bg-bg-dark text-neon-cyan text-xs rounded border border-neon-cyan border-opacity-50 font-mono"
                 >
                   {tech}
                 </span>
               ))}
             </div>
 
-            {/* Action Button */}
-            <button className="w-full py-2 border border-neon-pink text-neon-pink font-mono text-sm hover:bg-neon-pink hover:text-bg-dark transition-all rounded">
-              ACCESS FILES →
-            </button>
+            {/* Action Buttons */}
+            <div className="flex gap-2 mt-4">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2 border border-neon-cyan text-neon-cyan font-mono text-sm hover:bg-neon-cyan hover:text-bg-dark transition-all rounded text-center"
+                >
+                  LIVE DEMO →
+                </a>
+              )}
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2 border border-neon-gold text-neon-gold font-mono text-sm hover:bg-neon-gold hover:text-bg-dark transition-all rounded text-center"
+              >
+                VIEW CODE →
+              </a>
+            </div>
+            {project.stars !== undefined && project.stars > 0 && (
+              <div className="mt-2 text-xs text-text-muted font-mono">
+                ⭐ {project.stars} stars
+              </div>
+            )}
           </div>
         ))}
       </div>
+      )}
 
-      {/* Stats Summary */}
-      <div className="mt-12 grid grid-cols-3 gap-4">
-        <div className="text-center p-4 border border-neon-green rounded bg-bg-darker bg-opacity-30">
-          <div className="text-2xl font-bold text-neon-green mb-1">
-            {portfolioProjects.filter((p) => p.status === 'completed').length}
-          </div>
-          <div className="text-xs text-text-secondary font-mono">COMPLETED</div>
-        </div>
-        <div className="text-center p-4 border border-neon-gold rounded bg-bg-darker bg-opacity-30">
-          <div className="text-2xl font-bold text-neon-gold mb-1">
-            {portfolioProjects.filter((p) => p.status === 'in-progress').length}
-          </div>
-          <div className="text-xs text-text-secondary font-mono">IN PROGRESS</div>
-        </div>
-        <div className="text-center p-4 border border-text-muted rounded bg-bg-darker bg-opacity-30">
-          <div className="text-2xl font-bold text-text-muted mb-1">
-            {portfolioProjects.filter((p) => p.status === 'archived').length}
-          </div>
-          <div className="text-xs text-text-secondary font-mono">ARCHIVED</div>
-        </div>
-      </div>
+      {/* CTA Section */}
+      <section className="mt-12 py-10 text-center border-t border-neon-pink border-opacity-30">
+        <h3 className="text-2xl md:text-3xl text-neon-cyan font-mono mb-4">
+          [ INTERESTED IN COLLABORATION? ]
+        </h3>
+        <p className="text-text-secondary mb-6 max-w-2xl mx-auto">
+          Have a project in mind? Let&apos;s discuss how we can bring your vision to life with innovative 
+          solutions and cutting-edge technology.
+        </p>
+        <a
+          href={`/${locale}/contact`}
+          className="inline-block px-8 py-4 border-2 border-neon-cyan bg-transparent hover:bg-neon-cyan hover:bg-opacity-10 transition-all duration-300 rounded-lg"
+        >
+          <span className="text-neon-cyan font-mono text-lg tracking-wider hover:text-glow">
+            ▸ START A PROJECT
+          </span>
+        </a>
+      </section>
     </div>
   );
 }

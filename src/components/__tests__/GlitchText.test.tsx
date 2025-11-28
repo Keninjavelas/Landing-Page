@@ -1,6 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import GlitchText from '../GlitchText';
 
+// Mock Next.js navigation hooks
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  })),
+  useParams: jest.fn(() => ({
+    locale: 'en',
+  })),
+}));
+
 describe('GlitchText', () => {
   it('renders the text correctly', () => {
     render(<GlitchText>Test Text</GlitchText>);

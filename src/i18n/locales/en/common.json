@@ -6,33 +6,60 @@
     "contact": "Contact"
   },
   "home": {
-    "title": "Surveillance System",
-    "subtitle": "Monitoring Data Streams",
-    "description": "Welcome to the Retro-Futuristic Portfolio. Navigate through the secure channels to access classified information."
+    "title": "Aryan Kapoor",
+    "role": "Tech Explorer & Innovation Architect",
+    "subtitle": "Full-Stack Developer",
+    "tagline": "Digital Architect",
+    "description": "Crafting innovative web experiences at the intersection of modern technology and creative design. Specializing in React, Next.js, and immersive user interfaces.",
+    "cta": {
+      "projects": "View Projects",
+      "contact": "Get In Touch"
+    },
+    "skills": {
+      "title": "Technical Arsenal",
+      "subtitle": "Technologies and frameworks in my digital toolkit"
+    },
+    "availability": "Currently available for new projects"
   },
   "about": {
-    "title": "Agent Profile",
-    "subtitle": "Clearance Level: Maximum",
-    "description": "Experienced software engineer specializing in cutting-edge web technologies and immersive user experiences."
+    "title": "About Aryan Kapoor",
+    "subtitle": "Tech Explorer & Innovation Architect",
+    "heading": "About Me",
+    "description": "I'm an enthusiastic developer currently pursuing my degree in Computer Science, driven by a deep passion for building modern, meaningful web experiences. While I'm still early in my journey and have no formal industry experience yet, I'm actively strengthening my skills in React, Next.js, and Node.js through personal projects and continuous learning.",
+    "paragraph2": "I'm especially fascinated by cloud computing and am working toward building a solid foundation to kickstart my career in this fast-evolving domain. My curiosity naturally extends into emerging technologies—I've already explored practical applications of Quantum Computing through an academic project, and I'm equally captivated by the possibilities of blockchain and its potential impact on the future of digital systems.",
+    "paragraph3": "Every project I take on is an opportunity to grow, experiment, and push the limits of what I can create. I'm committed to writing clean, maintainable code and staying aligned with modern development practices. Collaboration, consistency, and a hunger to learn shape my journey as I work toward becoming a capable, industry-ready developer."
   },
   "projects": {
     "title": "Mission Archives",
-    "subtitle": "Completed Operations",
-    "viewProject": "Access Files"
+    "subtitle": "A showcase of completed operations and active development",
+    "description": "Explore my portfolio of projects showcasing modern web development, cloud computing, and emerging technologies.",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo"
   },
   "contact": {
-    "title": "Establish Connection",
-    "subtitle": "Secure Communication Channel",
-    "email": "Email",
-    "message": "Message",
-    "send": "Transmit"
-  },
-  "audio": {
-    "mute": "Mute",
-    "unmute": "Unmute",
-    "genre": "Audio Genre",
-    "classical": "Classical",
-    "jazz": "Jazz",
-    "piano": "Piano"
+    "title": "Get In Touch",
+    "subtitle": "Let's Build Something Amazing Together",
+    "description": "I'm always interested in new opportunities and exciting projects. Whether you have a question or want to work together, feel free to reach out!",
+    "internship": {
+      "title": "Internship Opportunities",
+      "description": "I am actively seeking internship opportunities to gain hands-on experience and contribute to innovative projects. Open to both paid and unpaid positions that offer valuable learning experiences.",
+      "details": "Interested in cloud computing, web development, and emerging technologies. Ready to bring enthusiasm, dedication, and a strong willingness to learn to your team.",
+      "cta": "Send Internship Inquiry"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Your Message",
+      "send": "Send Message"
+    },
+    "info": {
+      "title": "Contact Info",
+      "email": "Email",
+      "location": "Location",
+      "locationValue": "India (Remote Work Available)",
+      "response": "Usually responds within 24 hours"
+    }
   }
 }

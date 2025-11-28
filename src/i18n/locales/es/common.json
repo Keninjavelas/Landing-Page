@@ -6,33 +6,60 @@
     "contact": "Contacto"
   },
   "home": {
-    "title": "Sistema de Vigilancia",
-    "subtitle": "Monitoreando Flujos de Datos",
-    "description": "Bienvenido al Portafolio Retro-Futurista. Navega por los canales seguros para acceder a información clasificada."
+    "title": "Aryan Kapoor",
+    "role": "Explorador Tecnológico y Arquitecto de Innovación",
+    "subtitle": "Desarrollador Full-Stack",
+    "tagline": "Arquitecto Digital",
+    "description": "Creando experiencias web innovadoras en la intersección de la tecnología moderna y el diseño creativo. Especializado en React, Next.js e interfaces de usuario inmersivas.",
+    "cta": {
+      "projects": "Ver Proyectos",
+      "contact": "Contactar"
+    },
+    "skills": {
+      "title": "Arsenal Técnico",
+      "subtitle": "Tecnologías y frameworks en mi kit de herramientas digital"
+    },
+    "availability": "Actualmente disponible para nuevos proyectos"
   },
   "about": {
-    "title": "Perfil del Agente",
-    "subtitle": "Nivel de Autorización: Máximo",
-    "description": "Ingeniero de software experimentado especializado en tecnologías web de vanguardia y experiencias de usuario inmersivas."
+    "title": "Acerca de Aryan Kapoor",
+    "subtitle": "Explorador Tecnológico y Arquitecto de Innovación",
+    "heading": "Acerca de Mí",
+    "description": "Soy un desarrollador entusiasta que actualmente está cursando mi título en Ciencias de la Computación, impulsado por una profunda pasión por construir experiencias web modernas y significativas. Aunque todavía estoy en las primeras etapas de mi viaje y no tengo experiencia formal en la industria, estoy fortaleciendo activamente mis habilidades en React, Next.js y Node.js a través de proyectos personales y aprendizaje continuo.",
+    "paragraph2": "Estoy especialmente fascinado por la computación en la nube y estoy trabajando para construir una base sólida para iniciar mi carrera en este dominio en rápida evolución. Mi curiosidad se extiende naturalmente a las tecnologías emergentes: ya he explorado aplicaciones prácticas de la Computación Cuántica a través de un proyecto académico, y estoy igualmente cautivado por las posibilidades de blockchain y su impacto potencial en el futuro de los sistemas digitales.",
+    "paragraph3": "Cada proyecto que emprendo es una oportunidad para crecer, experimentar y superar los límites de lo que puedo crear. Estoy comprometido a escribir código limpio y mantenible y a mantenerme alineado con las prácticas de desarrollo modernas. La colaboración, la consistencia y el hambre de aprender dan forma a mi viaje mientras trabajo para convertirme en un desarrollador capaz y listo para la industria."
   },
   "projects": {
-    "title": "Archivos de Misiones",
-    "subtitle": "Operaciones Completadas",
-    "viewProject": "Acceder Archivos"
+    "title": "Archivos de Misión",
+    "subtitle": "Una muestra de operaciones completadas y desarrollo activo",
+    "description": "Explora mi portafolio de proyectos que muestran desarrollo web moderno, computación en la nube y tecnologías emergentes.",
+    "viewProject": "Ver Proyecto",
+    "viewCode": "Ver Código",
+    "liveDemo": "Demo en Vivo"
   },
   "contact": {
-    "title": "Establecer Conexión",
-    "subtitle": "Canal de Comunicación Seguro",
-    "email": "Correo Electrónico",
-    "message": "Mensaje",
-    "send": "Transmitir"
-  },
-  "audio": {
-    "mute": "Silenciar",
-    "unmute": "Activar Sonido",
-    "genre": "Género de Audio",
-    "classical": "Clásica",
-    "jazz": "Jazz",
-    "piano": "Piano"
+    "title": "Ponte en Contacto",
+    "subtitle": "Construyamos Algo Increíble Juntos",
+    "description": "Siempre estoy interesado en nuevas oportunidades y proyectos emocionantes. Ya sea que tengas una pregunta o quieras trabajar juntos, ¡no dudes en contactarme!",
+    "internship": {
+      "title": "Oportunidades de Pasantía",
+      "description": "Estoy buscando activamente oportunidades de pasantía para ganar experiencia práctica y contribuir a proyectos innovadores. Abierto a posiciones tanto remuneradas como no remuneradas que ofrezcan experiencias de aprendizaje valiosas.",
+      "details": "Interesado en computación en la nube, desarrollo web y tecnologías emergentes. Listo para aportar entusiasmo, dedicación y una fuerte voluntad de aprender a tu equipo.",
+      "cta": "Enviar Consulta de Pasantía"
+    },
+    "form": {
+      "name": "Tu Nombre",
+      "email": "Tu Correo",
+      "subject": "Asunto",
+      "message": "Tu Mensaje",
+      "send": "Enviar Mensaje"
+    },
+    "info": {
+      "title": "Información de Contacto",
+      "email": "Correo",
+      "location": "Ubicación",
+      "locationValue": "India (Trabajo Remoto Disponible)",
+      "response": "Generalmente responde dentro de 24 horas"
+    }
   }
 }
