@@ -30,7 +30,14 @@ export async function GET() {
       body: JSON.stringify(testData),
     });
 
-    const result = await response.json();
+    const responseText = await response.text();
+    let result;
+    
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      result = { error: 'Response is not JSON', responseText: responseText.substring(0, 500) };
+    }
 
     return NextResponse.json({
       success: response.ok,
@@ -38,6 +45,8 @@ export async function GET() {
       statusText: response.statusText,
       result: result,
       accessKeyPrefix: web3formsAccessKey.substring(0, 8) + '...',
+      accessKeyLength: web3formsAccessKey.length,
+      hasAccessKey: !!web3formsAccessKey,
     });
   } catch (error) {
     return NextResponse.json({
