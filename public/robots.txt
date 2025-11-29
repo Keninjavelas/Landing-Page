@@ -4,7 +4,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://your-portfolio-domain.com/sitemap.xml
+Sitemap: https://landing-page-sandy-alpha-26.vercel.app/sitemap.xml
 
 # Disallow admin or private routes if any
 # Disallow: /admin/

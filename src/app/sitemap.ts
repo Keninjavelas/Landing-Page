@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { locales } from '@/i18n/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://your-portfolio-domain.com';
+  const baseUrl = 'https://landing-page-sandy-alpha-26.vercel.app';
   const pages = ['', 'home', 'about', 'projects', 'contact'];
 
   const routes: MetadataRoute.Sitemap = [];

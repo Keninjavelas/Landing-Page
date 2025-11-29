@@ -58,7 +58,7 @@ Edit `src/lib/projects.ts` to manually configure projects if needed.
 
 ## 🌍 Domain Configuration
 
-Replace `your-portfolio-domain.com` with your actual domain:
+Replace `landing-page-sandy-alpha-26.vercel.app` with your custom domain if you have one:
 
 ```bash
 # Find and replace in these files:

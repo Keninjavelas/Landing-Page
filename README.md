@@ -2,6 +2,8 @@
 
 > A modern, multilingual portfolio website featuring a unique dual-theme design: sleek futuristic interface and nostalgic 80s CRT monitor aesthetic.
 
+**🌐 Live Demo:** [https://landing-page-sandy-alpha-26.vercel.app](https://landing-page-sandy-alpha-26.vercel.app)
+
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.18-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)

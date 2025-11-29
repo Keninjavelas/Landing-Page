@@ -35,7 +35,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const CONTACT_EMAIL = 'aryankapoor0303@gmail.com';
-export const PORTFOLIO_URL = 'https://your-portfolio-domain.com';
+export const PORTFOLIO_URL = 'https://landing-page-sandy-alpha-26.vercel.app';
 
 export const RESPONSE_TIME_HOURS = 24;
 export const BUSINESS_HOURS = {

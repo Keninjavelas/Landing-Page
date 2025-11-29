@@ -24,7 +24,7 @@ export function getPersonStructuredData(): PersonStructuredData {
     name: 'Aryan Kapoor',
     jobTitle: 'Full-Stack Developer',
     description: 'Full-stack developer specializing in React, Next.js, and Node.js. Creating innovative web experiences with modern technology and creative design.',
-    url: 'https://your-portfolio-domain.com',
+    url: 'https://landing-page-sandy-alpha-26.vercel.app',
     email: 'aryankapoor0303@gmail.com',
     sameAs: [
       'https://github.com/Keninjavelas',
@@ -56,10 +56,10 @@ export function getWebSiteStructuredData(): WebSiteStructuredData {
     '@type': 'WebSite',
     name: 'Aryan Kapoor Portfolio',
     description: 'Full-stack developer portfolio showcasing modern web development projects',
-    url: 'https://your-portfolio-domain.com',
+    url: 'https://landing-page-sandy-alpha-26.vercel.app',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://your-portfolio-domain.com/search?q={search_term_string}',
+      target: 'https://landing-page-sandy-alpha-26.vercel.app/search?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };
@@ -83,7 +83,7 @@ export function getPortfolioStructuredData(): PortfolioStructuredData {
     '@type': 'CreativeWork',
     name: 'Aryan Kapoor Portfolio',
     description: 'Portfolio of web development projects and case studies',
-    url: 'https://your-portfolio-domain.com',
+    url: 'https://landing-page-sandy-alpha-26.vercel.app',
     creator: {
       '@type': 'Person',
       name: 'Aryan Kapoor',

@@ -17,7 +17,7 @@ const ReadingProgress = lazy(() => import('@/components/ReadingProgress'));
 const ServiceWorker = lazy(() => import('@/components/ServiceWorker'));
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-portfolio-domain.com'),
+  metadataBase: new URL('https://landing-page-sandy-alpha-26.vercel.app'),
   title: 'Aryan Kapoor | Full-Stack Developer',
   description: 'Full-stack developer specializing in React, Next.js, and Node.js. Creating innovative web experiences with modern technology and creative design.',
   keywords: ['Aryan Kapoor', 'Full-Stack Developer', 'React', 'Next.js', 'TypeScript', 'Web Development', 'Portfolio'],
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Aryan Kapoor | Full-Stack Developer',
     description: 'Full-stack developer specializing in React, Next.js, and Node.js. Creating innovative web experiences.',
-    url: 'https://your-portfolio-domain.com',
+    url: 'https://landing-page-sandy-alpha-26.vercel.app',
     siteName: 'Aryan Kapoor Portfolio',
     type: 'website',
   },
