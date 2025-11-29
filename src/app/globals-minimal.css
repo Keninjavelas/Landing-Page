@@ -5,15 +5,15 @@
 /* ===== CSS Variables ===== */
 :root {
   --color-sepia: #c9a868;
-  --color-neon-cyan: #4dd0e1;
-  --color-neon-gold: #ffd54f;
-  --color-neon-pink: #f06292;
-  --color-neon-green: #81c784;
-  --color-bg-dark: #121212;
-  --color-bg-darker: #0a0a0a;
-  --color-text-primary: #e0e0e0;
-  --color-text-secondary: #b0b0b0;
-  --color-text-muted: #757575;
+  --color-neon-cyan: #00ffff;
+  --color-neon-gold: #ffd700;
+  --color-neon-pink: #ff69b4;
+  --color-neon-green: #00ff00;
+  --color-bg-dark: #0a0a0a;
+  --color-bg-darker: #000000;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e0e0e0;
+  --color-text-muted: #a0a0a0;
 }
 
 /* ===== Global Styles ===== */
@@ -157,17 +157,17 @@ a:focus-visible {
   --color-sepia: #d4a574;
   --color-neon-cyan: #ff6600;
   --color-neon-gold: #ffa500;
-  --color-neon-pink: #cc6600;
-  --color-neon-green: #cc9900;
-  --color-bg-dark: #2a1810;
-  --color-bg-darker: #1a1008;
-  --color-text-primary: #f5e6d3;
-  --color-text-secondary: #e6d4c1;
-  --color-text-muted: #c9a868;
+  --color-neon-pink: #ff8844;
+  --color-neon-green: #ffaa00;
+  --color-bg-dark: #1a0f08;
+  --color-bg-darker: #0a0500;
+  --color-text-primary: #ffeecc;
+  --color-text-secondary: #ffd699;
+  --color-text-muted: #d4a574;
 }
 
 [data-theme="retro"] body {
-  background-color: #0a0a0a;
+  background-color: #000000;
   background-image: 
     /* CRT scanlines */
     repeating-linear-gradient(
