@@ -92,27 +92,50 @@ export default function ContactForm({ locale }: ContactFormProps) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
+      // Submit directly to Web3Forms to avoid Cloudflare blocking
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      
+      if (!accessKey) {
+        setSubmitStatus({
+          type: 'error',
+          message: 'Contact form is not configured. Please email aryankapoor0303@gmail.com directly.',
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const web3formsData = {
+        access_key: accessKey,
+        name: formData.name,
+        email: 'aryankapoor0303@gmail.com', // Your email
+        from_name: formData.name,
+        subject: `Portfolio Contact: ${formData.subject}`,
+        message: `From: ${formData.name} (${formData.email})\n\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`,
+        replyto: formData.email,
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(web3formsData),
       });
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (response.ok && data.success) {
         setSubmitStatus({
           type: 'success',
-          message: data.message || 'Message sent successfully!',
+          message: 'Thank you for your message! I will get back to you soon.',
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
         setErrors({});
       } else {
         setSubmitStatus({
           type: 'error',
-          message: data.error || 'Failed to send message. Please try again.',
+          message: data.message || 'Failed to send message. Please try again.',
         });
       }
     } catch {
