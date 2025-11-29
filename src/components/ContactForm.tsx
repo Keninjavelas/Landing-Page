@@ -146,8 +146,8 @@ export default function ContactForm({ locale }: ContactFormProps) {
         <div
           className={`mb-6 p-4 rounded-lg border ${
             submitStatus.type === 'success'
-              ? 'border-neon-green bg-neon-green bg-opacity-10 text-neon-green'
-              : 'border-neon-pink bg-neon-pink bg-opacity-10 text-neon-pink'
+              ? 'border-neon-green bg-black text-neon-green'
+              : 'border-neon-pink bg-black text-neon-pink'
           } font-mono text-sm`}
           role="alert"
           aria-live="polite"
