@@ -107,11 +107,12 @@ export async function POST(request: NextRequest) {
         const emailData = {
           access_key: web3formsAccessKey,
           name: name,
-          email: email,
+          email: recipientEmail, // Your email where you want to receive messages
+          from_name: name,
           subject: `Portfolio Contact: ${subject}`,
           message: `From: ${name} (${email})\n\nSubject: ${subject}\n\nMessage:\n${message}`,
-          from_name: name,
-          replyto: email,
+          replyto: email, // Sender's email for reply
+          redirect: false, // Don't redirect after submission
         };
 
         const response = await fetch('https://api.web3forms.com/submit', {
@@ -127,11 +128,21 @@ export async function POST(request: NextRequest) {
         
         if (response.ok && result.success) {
           console.log('✅ Email sent successfully to:', recipientEmail);
+          console.log('📧 Web3Forms response:', result);
         } else {
           console.error('❌ Web3Forms error:', {
             status: response.status,
+            statusText: response.statusText,
             message: result.message || 'Unknown error',
-            result: result
+            errors: result.errors || [],
+            fullResult: result
+          });
+          // Log the data that was sent for debugging
+          console.error('📤 Data sent to Web3Forms:', {
+            access_key: web3formsAccessKey.substring(0, 8) + '...',
+            email: recipientEmail,
+            from_name: name,
+            subject: `Portfolio Contact: ${subject}`,
           });
         }
       } catch (emailError) {
