@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Try to send email via Web3Forms (if access key is configured)
-    const web3formsAccessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    const web3formsAccessKey = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
     
     if (web3formsAccessKey) {
       try {

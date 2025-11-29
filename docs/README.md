@@ -16,6 +16,7 @@ Start here if you're new to the project:
 
 - **[Quick Start Guide](QUICK_START.md)** - Quick reference for common tasks
 - **[Setup Guide](SETUP_GUIDE.md)** - Complete setup instructions
+- **[Contact Form Setup](CONTACT_FORM_SETUP.md)** - Configure email delivery
 - **[Deployment Guide](DEPLOYMENT.md)** - Deploy to various platforms
 - **[Commands Reference](COMMANDS.md)** - All commands in one place
 
