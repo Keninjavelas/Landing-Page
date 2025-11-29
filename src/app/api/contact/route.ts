@@ -104,24 +104,19 @@ export async function POST(request: NextRequest) {
     
     if (web3formsAccessKey) {
       try {
-        const emailData = {
-          access_key: web3formsAccessKey,
-          name: name,
-          email: recipientEmail, // Your email where you want to receive messages
-          from_name: name,
-          subject: `Portfolio Contact: ${subject}`,
-          message: `From: ${name} (${email})\n\nSubject: ${subject}\n\nMessage:\n${message}`,
-          replyto: email, // Sender's email for reply
-          redirect: false, // Don't redirect after submission
-        };
+        // Use FormData instead of JSON to bypass Cloudflare protection
+        const formData = new FormData();
+        formData.append('access_key', web3formsAccessKey);
+        formData.append('name', name);
+        formData.append('email', recipientEmail); // Your email where you want to receive messages
+        formData.append('from_name', name);
+        formData.append('subject', `Portfolio Contact: ${subject}`);
+        formData.append('message', `From: ${name} (${email})\n\nSubject: ${subject}\n\nMessage:\n${message}`);
+        formData.append('replyto', email); // Sender's email for reply
 
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify(emailData),
+          body: formData,
         });
 
         const result = await response.json();
