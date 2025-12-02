@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 // Rate limiting: max 5 requests per hour per IP
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -99,53 +100,41 @@ export async function POST(request: NextRequest) {
       ip,
     });
 
-    // Try to send email via Web3Forms (if access key is configured)
-    const web3formsAccessKey = process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    // Try to send email via Resend
+    const resendApiKey = process.env.RESEND_API_KEY;
     
-    if (web3formsAccessKey) {
+    if (resendApiKey) {
       try {
-        // Use FormData instead of JSON to bypass Cloudflare protection
-        const formData = new FormData();
-        formData.append('access_key', web3formsAccessKey);
-        formData.append('name', name);
-        formData.append('email', recipientEmail); // Your email where you want to receive messages
-        formData.append('from_name', name);
-        formData.append('subject', `Portfolio Contact: ${subject}`);
-        formData.append('message', `From: ${name} (${email})\n\nSubject: ${subject}\n\nMessage:\n${message}`);
-        formData.append('replyto', email); // Sender's email for reply
-
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData,
-        });
-
-        const result = await response.json();
+        const resend = new Resend(resendApiKey);
         
-        if (response.ok && result.success) {
-          console.log('✅ Email sent successfully to:', recipientEmail);
-          console.log('📧 Web3Forms response:', result);
+        const emailResult = await resend.emails.send({
+          from: 'Portfolio Contact <onboarding@resend.dev>',
+          to: recipientEmail,
+          replyTo: email,
+          subject: `Portfolio Contact: ${subject}`,
+          text: `From: ${name} (${email})\n\nSubject: ${subject}\n\nMessage:\n${message}`,
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>From:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Subject:</strong> ${subject}</p>
+            <hr>
+            <p><strong>Message:</strong></p>
+            <p>${message.replace(/\n/g, '<br>')}</p>
+          `,
+        });
+        
+        if (emailResult.data) {
+          console.log('✅ Email sent successfully via Resend to:', recipientEmail);
+          console.log('📧 Email ID:', emailResult.data.id);
         } else {
-          console.error('❌ Web3Forms error:', {
-            status: response.status,
-            statusText: response.statusText,
-            message: result.message || 'Unknown error',
-            errors: result.errors || [],
-            fullResult: result
-          });
-          // Log the data that was sent for debugging
-          console.error('📤 Data sent to Web3Forms:', {
-            access_key: web3formsAccessKey.substring(0, 8) + '...',
-            email: recipientEmail,
-            from_name: name,
-            subject: `Portfolio Contact: ${subject}`,
-          });
+          console.error('❌ Resend error:', emailResult.error);
         }
       } catch (emailError) {
         console.error('❌ Email sending error:', emailError);
-        // Continue even if email fails - we still logged it
       }
     } else {
-      console.warn('⚠️ WEB3FORMS_ACCESS_KEY not configured. Email not sent.');
+      console.warn('⚠️ RESEND_API_KEY not configured. Email not sent.');
       console.log(`📧 Email would be sent to: ${recipientEmail}`);
     }
 
@@ -154,7 +143,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         success: true,
-        message: web3formsAccessKey 
+        message: resendApiKey 
           ? 'Thank you for your message! I will get back to you soon.' 
           : 'Thank you for your message! Your submission has been logged. For immediate contact, please email aryankapoor0303@gmail.com directly.'
       },
