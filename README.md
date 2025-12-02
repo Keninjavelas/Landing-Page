@@ -7,6 +7,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.18-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Resend](https://img.shields.io/badge/Email-Resend-000000?style=flat-square)](https://resend.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](docs/CONTRIBUTING.md)
 
@@ -14,18 +15,20 @@
 
 - **🎨 Dual Theme System** - Switch between futuristic neon and retro CRT aesthetics
 - **🌍 Multilingual** - Full support for English, Spanish, French, and German
-- **🎵 Background Music** - Optional ambient music with genre selection
+- **🎵 Background Music** - Optional ambient music with genre selection (Jazz & Piano)
 - **📱 Responsive Design** - Optimized for all devices and screen sizes
 - **🎯 Dynamic Projects** - Auto-synced with GitHub repositories
-- **📧 Contact Form** - Functional form with Web3Forms integration
-- **🎮 Easter Eggs** - Hidden interactive elements throughout
+- **📧 Contact Form** - Functional email delivery powered by Resend API
+- **🎮 Easter Eggs** - Hidden interactive elements and secret game
 - **⚡ Performance** - SSR/SSG with optimized loading and caching
+- **🔒 Privacy-First** - Audio preferences and language reset on reload
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
+- **Email:** Resend API
 - **3D Graphics:** Three.js & React Three Fiber
 - **Animations:** Framer Motion
 - **Audio:** Howler.js
@@ -51,7 +54,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env.local
-# Edit .env.local and add your Web3Forms access key
+# Edit .env.local and add your Resend API key
 
 # Start development server
 npm run dev
@@ -99,13 +102,13 @@ Create `.env.local` in the root directory:
 
 ```env
 # Required for contact form
-NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+RESEND_API_KEY=re_your_api_key_here
 
 # Optional: GitHub token for higher API rate limits
 GITHUB_TOKEN=your_github_token
 ```
 
-Get your Web3Forms access key at [web3forms.com](https://web3forms.com/)
+Get your Resend API key at [resend.com/api-keys](https://resend.com/api-keys)
 
 ### Customization
 
@@ -148,15 +151,14 @@ For detailed deployment instructions, see the [Deployment Guide](docs/DEPLOYMENT
 
 Complete documentation is available in the [`docs/`](docs/) folder:
 
-- [Quick Start Guide](docs/QUICK_START.md) - Fast setup and common commands
-- [Setup Guide](docs/SETUP_GUIDE.md) - Detailed installation instructions
-- [Deployment Guide](docs/DEPLOYMENT.md) - Deploy to various platforms
-- [Contributing Guide](docs/CONTRIBUTING.md) - How to contribute
-- [Commands Reference](docs/COMMANDS.md) - All commands in one place
-- [Changelog](docs/CHANGELOG.md) - Version history
-- [Project Status](docs/PROJECT_STATUS.md) - Current project status
-
-See the [Documentation Index](docs/README.md) for the complete list.
+- [📖 Documentation Index](docs/README.md) - Complete guide overview
+- [🚀 Quick Start Guide](docs/QUICK_START.md) - Fast setup and common commands
+- [⚙️ Setup Guide](docs/SETUP_GUIDE.md) - Detailed installation instructions
+- [📧 Contact Form Setup](docs/CONTACT_FORM_SETUP.md) - Email configuration with Resend
+- [🚀 Deployment Guide](docs/DEPLOYMENT.md) - Deploy to various platforms
+- [🤝 Contributing Guide](docs/CONTRIBUTING.md) - How to contribute
+- [💻 Commands Reference](docs/COMMANDS.md) - All commands in one place
+- [📝 Changelog](docs/CHANGELOG.md) - Version history
 
 ## 🤝 Contributing
 
@@ -176,10 +178,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Aryan Kapoor**  
 Email: [aryankapoor0303@gmail.com](mailto:aryankapoor0303@gmail.com)  
-GitHub: [@Keninjavelas](https://github.com/Keninjavelas)
+GitHub: [@Keninjavelas](https://github.com/Keninjavelas)  
+Portfolio: [landing-page-sandy-alpha-26.vercel.app](https://landing-page-sandy-alpha-26.vercel.app)
 
 ---
 
 <div align="center">
-  <strong>Made with ❤️ and lots of ☕</strong>
+  <strong>Made with ❤️ and lots of ☕</strong><br>
+  <em>Featuring dual themes, multilingual support, and functional email delivery</em>
 </div>
